@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Feliz Aniversário, Duda! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4081;
+            --secondary-color: #e91e63;
+            --accent-color: #ffd700;
+            --background-light: #fff0f5;
+            --background-dark: #ffcccb;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--background-dark));
+            text-align: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fundo animado com estrelas */
+        .star-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);
+            animation: twinkle 10s infinite;
+            z-index: -1;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+            display: none;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 64, 129, 0.8);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes glowText {
+            0% { text-shadow: 0 0 10px rgba(255, 64, 129, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::after {
+            width: 200%;
+            height: 200%;
+        }
+
+        button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.7);
+        }
+
+        /* Corações e estrelas flutuantes */
+        .heart, .star {
+            position: fixed;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            opacity: 0.9;
+            animation: floatUp 5s ease-in infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            animation-duration: 3.5s;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Fogos e confetes */
+        .firework, .confetti {
+            position: fixed;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .firework {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        .confetti {
+            width: 14px;
+            height: 14px;
+            animation: confettiFall 6s linear forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(30); opacity: 0; }
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(100vh) rotate(1080deg); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            button { font-size: 1rem; padding: 12px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="star-background"></div>
+
+    <!-- Página Inicial -->
+    <div id="inicio" class="container active">
+        <h1>🎉 Feliz Aniversário, Duda! ❤️</h1>
+        <p id="msg1"></p>
+        <button onclick="mostrar('mensagem')">📜 Ver Mensagem</button>
+    </div>
+
+    <!-- Página de Mensagem -->
+    <div id="mensagem" class="container">
+        <h1>🥳 Parabéns, Duda! 🎂</h1>
+        <p id="msg2"></p>
+        <button onclick="mostrar('final')">💌 Mais um recado...</button>
+    </div>
+
+    <!-- Página Final -->
+    <div id="final" class="container">
+        <h1>💖 Você é incrível, Duda! 💕</h1>
+        <p id="msg3"></p>
+        <button onclick="ativarCelebracao()">🎸 Finalizar com Lil Peep</button>
+    </div>
+
+    <script>
+        // Textos originais mantidos
+        const textos = {
+            inicio: "Hoje é um dia muito especial para a pessoa que eu mais amo nesse mundo. 🤍",
+            mensagem: "Tenho nem palavras para descrever o tanto que eu amo um ser humano igual você. Todos os dias me pergunto como eu fui o ser mais sortudo desse mundo para ter alguém como você na minha vida. Agradeço muito por ter conhecido uma garota incrível como você, e por ter conseguido ser seu melhor amigo por tanto tempo já. Planejo ver você sim algum dia. Espero que você possa aproveitar seu dia e continuar sendo essa pessoa espetacular como sempre. 💞",
+            final: "Eu não tenho palavras suficientes para descrever o quanto você é especial pra mim e o quanto eu quero fazer você feliz. Espero que seu aniversário seja incrível e que os de adiante sejam também (eu não vou esquecer a promessa dos 30 anos, viu?). 💝🎂"
+        };
+
+        function mostrar(pagina) {
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(50px)';
+                setTimeout(() => container.style.display = 'none', 800);
+            });
+
+            const novaPagina = document.getElementById(pagina);
+            setTimeout(() => {
+                novaPagina.style.display = 'block';
+                setTimeout(() => {
+                    novaPagina.style.opacity = '1';
+                    novaPagina.style.transform = 'translateY(0)';
+                    digitarTexto(pagina);
+                }, 50);
+            }, 800);
+        }
+
+        function digitarTexto(pagina) {
+            const elemento = document.getElementById(`msg${pagina === 'inicio' ? '1' : pagina === 'mensagem' ? '2' : '3'}`);
+            elemento.innerHTML = '';
+            const texto = textos[pagina];
+            let i = 0;
+
+            function digitar() {
+                if (i < texto.length) {
+                    elemento.innerHTML += texto.charAt(i);
+                    i++;
+                    setTimeout(digitar, 40);
+                }
+            }
+            digitar();
+        }
+
+        function criarParticulas(tipo) {
+            const elemento = document.createElement('div');
+            elemento.classList.add(tipo);
+            elemento.style.left = Math.random() * 100 + 'vw';
+            elemento.innerHTML = tipo === 'heart' ? '❤️' : '✨';
+            document.body.appendChild(elemento);
+            setTimeout(() => elemento.remove(), 5000);
+        }
+
+        setInterval(() => {
+            criarParticulas('heart');
+            criarParticulas('star');
+        }, 600);
+
+        function ativarCelebracao() {
+            // Fogos de artifício
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.classList.add('firework');
+                    firework.style.left = Math.random() * 90 + 5 + 'vw';
+                    firework.style.top = Math.random() * 60 + 'vh';
+                    document.body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 1500);
+                }, i * 150);
+            }
+
+            // Confetes
+            const colors = ['#ff4081', '#ffd700', '#e91e63', '#ff69b4', '#00ced1'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 6000);
+            }
+
+            // Dedicatória ao Lil Peep com "Ghost Girl"
+            const audio = new Audio('https://drive.google.com/uc?export=download&id=1kiI5eYJDcDUUMyVHbvVb0XUSv3SK-E9d');
+            audio.play().catch(() => console.log("Erro ao tocar áudio - permita reprodução automática ou interaja com a página"));
+            alert("🎸 Duda, esse momento é todo seu! Dedico a você o álbum do Lil Peep, porque sei o quanto você ama ele. 'Ghost Girl' está tocando agora pra te fazer sentir ainda mais especial. Feliz aniversário, minha estrela! ⭐❤️");
+        }
+
+        window.onload = () => digitarTexto('inicio');
+    </script>
+</body>
+</html>
